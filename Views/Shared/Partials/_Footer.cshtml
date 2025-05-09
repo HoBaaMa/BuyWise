@@ -68,3 +68,39 @@
 <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
 
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<script src="~/lib/easing/easing.min.js"></script>
+<script src="~/lib/owlcarousel/owl.carousel.min.js"></script>
+
+<!-- Contact Javascript File -->
+<script src="~/mail/jqBootstrapValidation.min.js"></script>
+<script src="~/mail/contact.js"></script>
+
+<!-- Template Javascript -->
+<script src="~/js/main.js"></script>
+
+<script>
+    $(document).ready(function(){
+        $(".addtocardbtn").click(function(){
+
+            var productId = $(this).data("id");
+            var productPrice = $(this).data("price");
+            var productPriceAfterDiscount = $(this).data("priceafterdiscount");
+
+            const data={productId: productId, productPrice:productPrice, productPriceAfterDiscount: productPriceAfterDiscount};
+
+             $.ajax({
+                 url:'@Url.Action("AddToCard", "Order")' ,//  '/Order/AddToCard',
+                 type: 'POST',
+                 contentType: 'application/json; charset=utf-8',
+                 data: JSON.stringify(data),
+                 success:function(data){
+                     alert(data);
+                 }
+             })
+        })
+
+    });
+</script>
