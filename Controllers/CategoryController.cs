@@ -1,4 +1,5 @@
 ﻿using BuyWise.Models;
+using BuyWise.Models.Products;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BuyWise.Controllers
