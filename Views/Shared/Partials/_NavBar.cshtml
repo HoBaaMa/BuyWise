@@ -25,8 +25,8 @@
                     <div class="navbar-nav mr-auto py-0">
                         <a href="@Url.Action("Index", "Home")" class="nav-item nav-link @(currentController == "Home" && currentAction == "Index" ? "active" : "")">Home</a>
                         <a href="@Url.Action("Index", "Shop")" class="nav-item nav-link @(currentController == "Home" && currentAction == "Shop" ? "active" : "")">Shop</a>
-                        <a href="@Url.Action("Index", "Shop")" class="nav-item nav-link @(currentController == "Home" && currentAction == "About" ? "active" : "")">About</a>
-                        <a href="@Url.Action("Index", "Contact")" class="nav-item nav-link @(currentController == "Home" && currentAction == "Contact" ? "active" : "")">Contact</a>
+                        <a href="@Url.Action("Index", "About")" class="nav-item nav-link @(currentController == "Home" && currentAction == "About" ? "active" : "")">About</a>
+                        <a href="@Url.Action("Contact", "About")" class="nav-item nav-link @(currentController == "Home" && currentAction == "Contact" ? "active" : "")">Contact</a>
                     </div>
                     <div class="navbar-nav ml-auto py-0">
                         <a href="@Url.Action("Login", "Customer")" class="nav-item nav-link">Login</a>
