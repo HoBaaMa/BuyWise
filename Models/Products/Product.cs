@@ -32,7 +32,7 @@ namespace BuyWise.Models.Products
         public long BrandId { get; set; }
         public Brand? Brand { get; set; }
         public IEnumerable<ProductImage>? ProductImages { get; set; }
-        public long Rate { get; set; }
+        //public long Rate { get; set; }
 
         //public List<ProductStock>? ProductStocks { get; set; }
 
