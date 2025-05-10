@@ -1,7 +1,9 @@
+using BuyWise.Models;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<BuyWiseDBContext>();
 
 var app = builder.Build();
 
