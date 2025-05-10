@@ -20,6 +20,22 @@ namespace BuyWise.Controllers
             //HttpContext.Session.SetInt32("_ProductInCard", 0);
 
             var categories = _dbContext.Categories.ToList();
+            ViewBag.Categories = categories;
+            var hotDeals = _dbContext.Products
+                .Select(p => new
+                {
+                    ProductName = p.Name,
+                    ProductId = p.Id,
+                    ProductPrice = p.CurrentPrice,
+                    ProductPriceAfterDiscount = p.CurrentPrice * (decimal)0.8,
+                    ProductCategory = p.Category!.Name,
+                    ProductBrand = p.Brand!.Name,
+                    ProductImage = p.ProductImages!.FirstOrDefault()!.ImageUrl,
+                    Discount = 20 // Example static discount, replace with real logic if needed
+                })
+                .Take(10)
+                .ToList();
+            ViewBag.HotDeals = hotDeals;
             return View();
         }
 
