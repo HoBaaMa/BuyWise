@@ -19,8 +19,7 @@ namespace BuyWise.Controllers
         {
             //HttpContext.Session.SetInt32("_ProductInCard", 0);
 
-            var categories = _dbContext.Categories.ToList();
-            ViewBag.Categories = categories;
+
             var hotDeals = _dbContext.Products
                 .Select(p => new
                 {
