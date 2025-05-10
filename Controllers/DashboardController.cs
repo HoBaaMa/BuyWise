@@ -58,8 +58,10 @@ namespace BuyWise.Controllers
 
         public IActionResult DisplayCategories()
         {
-            var categories = from c in _dbContext.Categories
-                             select c;
+            //var categories = from c in _dbContext.Categories
+            //                 select c;
+            var categories = _dbContext.Categories.ToList();
+
             return View(categories);
         }
         public IActionResult CreateCategory()
@@ -96,5 +98,6 @@ namespace BuyWise.Controllers
             _dbContext.SaveChanges();
             return View(updatedCategory);
         }
+
     }
 }

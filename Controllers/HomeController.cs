@@ -1,12 +1,14 @@
-using System.Diagnostics;
 using BuyWise.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
 
 namespace BuyWise.Controllers
 {
-    public class HomeController : Controller
+    public partial class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+
+        BuyWiseDBContext _dbContext = new();
 
         public HomeController(ILogger<HomeController> logger)
         {
@@ -15,6 +17,9 @@ namespace BuyWise.Controllers
 
         public IActionResult Index()
         {
+            //HttpContext.Session.SetInt32("_ProductInCard", 0);
+
+            var categories = _dbContext.Categories.ToList();
             return View();
         }
 
@@ -28,5 +33,55 @@ namespace BuyWise.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        public IActionResult ProductSearch(long? categoryId, decimal? minPrice, decimal? maxPrice, string? txtSearch)
+        {
+            var result = _dbContext.Products.Where(p =>
+                 (
+                txtSearch == null
+                ||
+                (p.Name + p.Category.Name + p.Brand.Name).Contains(txtSearch))
+                 &&
+                (p.CategoryId == categoryId || categoryId == null) &&
+                (minPrice == null || p.CurrentPrice >= minPrice) &&
+                (maxPrice == null || p.CurrentPrice >= maxPrice)
+             ).Select(p => new
+             {
+                 ProductName = p.Name,
+                 ProductId = p.Id,
+                 ProductPrice = p.CurrentPrice,
+                 ProductPriceAfterDiscount = p.CurrentPrice * (decimal)0.8,
+                 ProductCategory = p.Category!.Name,
+                 ProductBrand = p.Brand!.Name,
+                 ProductImage = p.ProductImages!.FirstOrDefault()!.ImageUrl,
+             }).ToList();
+
+
+            return View("ProductSearchResult", result);
+        }
+
+        public IActionResult ProductDetail(long productId)
+        {
+
+            var productDetail = _dbContext.Products.Where(p => p.Id == productId).Select(p => new
+            {
+                ProductName = p.Name,
+                ProductShortDescription = p.ShortDescription,
+                ProductDescription = p.Description,
+                ProductId = p.Id,
+                ProductPrice = p.CurrentPrice,
+                ProductPriceAfterDiscount = p.CurrentPrice * (decimal)0.8,
+                ProductCategory = p.Category!.Name,
+                ProductBrand = p.Brand!.Name,
+                ProductImages = p.ProductImages!.ToList(),
+            }).FirstOrDefault();
+
+
+
+            return View("Detail", productDetail);
+        }
+
+
+
     }
 }
