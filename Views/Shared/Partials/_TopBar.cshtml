@@ -49,9 +49,9 @@
                         <button class="input-group-text bg-transparent text-primary" type="submit">
                             <i class="fa fa-search"></i>
                         </button>
-                        <button class="input-group-text bg-transparent p-2" type="button" data-toggle="modal"
+                        <button class="input-group-text bg-transparent p-0" type="button" data-toggle="modal"
                                 data-target="#advancedSearchModal" title="Advanced Search" style="border-left: none;">
-                            <i class="fas fa-filter" style="font-size: 1.1rem; color: #FF8716;"></i>
+                            <i class="fas fa-filter" style="font-size: 1.3rem; color: #FF8716;"></i>
                         </button>
                     </div>
                 </div>
@@ -73,7 +73,7 @@
 <!-- Modal -->
 <div class="modal fade" id="advancedSearchModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
      aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-md" role="document">
         <div class="modal-content">
             <form method="post" asp-action="index" asp-controller="search">
                 <div class="modal-header">

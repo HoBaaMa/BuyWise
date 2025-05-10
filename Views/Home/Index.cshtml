@@ -3,32 +3,13 @@
 }
 
 @* <div class="text-center"> *@
-@*     <h1 class="display-4">Welcome</h1> *@
-@*     <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p> *@
-@* </div> *@
-
-<!-- هنا تحط الحاجة الخاصة بالهوم بس -->
 <div id="header-carousel" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active" style="height: 410px;">
             <img class="img-fluid" src="img/banner_home1.png" alt="Image">
-            @* <div class="carousel-caption d-flex flex-column align-items-center justify-content-center"> *@
-            @*     <div class="p-3" style="max-width: 700px;"> *@
-            @*         <h4 class="text-light text-uppercase font-weight-medium mb-3">10% Off Your First Order</h4> *@
-            @*         <h3 class="display-4 text-white font-weight-semi-bold mb-4">Fashionable Dress</h3> *@
-            @*         <a href="" class="btn btn-light py-2 px-3">Shop Now</a> *@
-            @*     </div> *@
-            @* </div> *@
         </div>
         <div class="carousel-item" style="height: 410px;">
             <img class="img-fluid" src="img/banner_home2.png" alt="Image">
-            @* <div class="carousel-caption d-flex flex-column align-items-center justify-content-center"> *@
-            @*     <div class="p-3" style="max-width: 700px;"> *@
-            @*         <h4 class="text-light text-uppercase font-weight-medium mb-3">10% Off Your First Order</h4> *@
-            @*         <h3 class="display-4 text-white font-weight-semi-bold mb-4">Reasonable Price</h3> *@
-            @*         <a href="" class="btn btn-light py-2 px-3">Shop Now</a> *@
-            @*     </div> *@
-            @* </div> *@
         </div>
     </div>
     <a class="carousel-control-prev" href="#header-carousel" data-slide="prev">
@@ -191,9 +172,10 @@
                                         <span class="text-warning font-weight-bold">$@product.ProductPriceAfterDiscount</span>
                                         <span class="text-muted"><del>$@product.ProductPrice</del></span>
                                     </div>
-                                    <button class="btn btn-warning btn-block mt-auto">
-                                        <i class="fa fa-shopping-cart"></i> Add To Cart
-                                    </button>
+                                    <a href="@Url.Action("ProductDetail", "Home", new { productId = product.ProductId })"
+                                       class="btn btn-warning btn-block mt-auto">
+                                        <i class="fa fa-eye"></i> View Details
+                                    </a>
                                 </div>
                             </div>
                         </div>
