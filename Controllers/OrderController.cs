@@ -28,7 +28,7 @@ namespace BuyWise.Controllers
 
 
 
-        public IActionResult AddToCard(CardDetail cardDetail)
+        public IActionResult AddToCart(CardDetail cardDetail)
         {
             Order order = new()
             {

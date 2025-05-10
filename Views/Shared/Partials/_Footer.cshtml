@@ -129,7 +129,7 @@
             const data = { productId: productId, productPrice: productPrice, productPriceAfterDiscount: productPriceAfterDiscount };
 
             $.ajax({
-                url: '@Url.Action("AddToCard", "Order")',//  '/Order/AddToCard',
+                url: '@Url.Action("AddToCart", "Order")',//  '/Order/AddToCard',
                 type: 'POST',
                 contentType: 'application/json; charset=utf-8',
                 data: JSON.stringify(data),
